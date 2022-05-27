@@ -33,7 +33,7 @@ export function makeServer() {
 
         seeds(server) {
             //nome do factorie, e quantidade a ser criada
-            server.createList('user',50)
+            server.createList('user',10)
         },
 
         //quais rotas o server vai ter

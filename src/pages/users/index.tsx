@@ -24,7 +24,7 @@ export default function UserList(){
         });
 
         return users;
-    })
+    }, {staleTime: 1000 * 5} ) //5 seconds de cache
 
     //por padrao n esta na wide version, so a partir do larger
     const isWideVersion = useBreakpointValue({

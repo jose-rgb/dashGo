@@ -9,7 +9,7 @@ import { SideBar } from "../../components/Sidebar";
 
 export default function UserList(){
     //req com react-query
-    const { data, isLoading, error } = useQuery('users', async () => {
+    const { data, isLoading, isFetching, error } = useQuery('users', async () => {
         const response = await fetch('http://localhost:3000/api/users')
         const data = await response.json()
 
@@ -45,7 +45,11 @@ export default function UserList(){
 
                     <Flex mb="8" justify="space-between" align="center">
 
-                        <Heading size="lg" fontWeight="normal" >Usuários</Heading>
+                        <Heading size="lg" fontWeight="normal">
+                            Usuários
+                            {/*mostrar spinner quando n tiver em loading e tiver em refetch de dados*/}
+                            {! isLoading && isFetching && <Spinner size="sm" color="gray.500" ml="4" /> }
+                        </Heading>
 
                         <Link href="/users/create" passHref>
                             <Button as="a" size="sm" fontSize="sm" colorScheme="pink" leftIcon={<Icon as={RiAddLine} fontSize="20" />} >

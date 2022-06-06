@@ -4,9 +4,10 @@ interface PaginationItemProps {
     number: number;
     //e o botão da page atual?
     isCurrent?: boolean;
+    onPageChange: (page: number) => void;
 }
 
-export function PaginationItem({isCurrent = false, number}: PaginationItemProps) {
+export function PaginationItem({isCurrent = false, number, onPageChange}: PaginationItemProps) {
     //se estiver na page atual
     if (isCurrent) {
         //retornar button
@@ -37,6 +38,7 @@ export function PaginationItem({isCurrent = false, number}: PaginationItemProps)
             _hover={{
                 bg: 'gray.500'
             }}
+            onClick={() => onPageChange(number)}
         >
             {number}
         </Button>
